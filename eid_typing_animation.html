@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ঈদ মোবারক বার্তা</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffeaea;
+      font-family: 'Noto Sans Bengali', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 360px;
+      width: 90%;
+      border: 2px solid #f79494;
+      text-align: center;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #d90000;
+    }
+
+    .line {
+      font-size: 17px;
+      color: #333;
+      line-height: 1.8;
+      min-height: 1.8em;
+      white-space: pre-wrap;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-weight: bold;
+      color: #444;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>ঈদ মোবারক, আমার প্রিয়তমা! 🌙</h2>
+    <div class="line" id="line1"></div>
+    <div class="line" id="line2"></div>
+    <div class="line" id="line3"></div>
+    <div class="line" id="line4"></div>
+    <div class="footer" id="footer">
+      চিরকাল তোমারই,<br>
+      তোমার প্রিয়
+    </div>
+  </div>
+
+  <script>
+    const lines = [
+      "তোমার হাসি এই ঈদের সবচেয় উজ্জ্বল চাঁদ।",
+      "তুমি আমার জীবনকে ভালোবাসা আর আনন্দে ভরিয়ে দিয়েছো। ❤️",
+      "✨🌙✨",
+      "এই ঈদ আমি শুধু চাই তুমি সুখে থাকো, আমার ভালোবাসা।"
+    ];
+
+    function typeLine(text, elementId, delay, callback) {
+      const el = document.getElementById(elementId);
+      let i = 0;
+      function typeChar() {
+        if (i <= text.length) {
+          el.textContent = text.slice(0, i);
+          i++;
+          setTimeout(typeChar, 50);
+        } else if (callback) {
+          callback();
+        }
+      }
+      setTimeout(typeChar, delay);
+    }
+
+    typeLine(lines[0], "line1", 500, () => {
+      typeLine(lines[1], "line2", 500, () => {
+        typeLine(lines[2], "line3", 500, () => {
+          typeLine(lines[3], "line4", 500, () => {
+            document.getElementById("footer").style.display = "block";
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
