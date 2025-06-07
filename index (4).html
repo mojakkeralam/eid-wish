@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -10,25 +9,67 @@
     body {
       margin: 0;
       padding: 0;
-      background: url('digital-art-valentine-s-day-scene-with-couple-love.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #fea8f7 75%, #f093fb 100%);
       font-family: 'Hind Siliguri', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated love emojis background */
+    .love-emoji {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.6;
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .love-emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+    .love-emoji:nth-child(2) { top: 20%; left: 80%; animation-delay: 1s; }
+    .love-emoji:nth-child(3) { top: 40%; left: 5%; animation-delay: 2s; }
+    .love-emoji:nth-child(4) { top: 60%; left: 90%; animation-delay: 3s; }
+    .love-emoji:nth-child(5) { top: 80%; left: 15%; animation-delay: 4s; }
+    .love-emoji:nth-child(6) { top: 70%; left: 75%; animation-delay: 5s; }
+    .love-emoji:nth-child(7) { top: 30%; left: 50%; animation-delay: 1.5s; }
+    .love-emoji:nth-child(8) { top: 85%; left: 60%; animation-delay: 2.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+
+    /* Additional floating hearts */
+    .heart-particle {
+      position: absolute;
+      color: rgba(255, 182, 193, 0.7);
+      font-size: 16px;
+      animation: heartFloat 8s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes heartFloat {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       padding: 30px 25px;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
       max-width: 400px;
       width: 90%;
       border: 2px solid #ff9ea7;
       text-align: center;
       position: relative;
+      z-index: 10;
+      backdrop-filter: blur(10px);
     }
 
     h2 {
@@ -54,6 +95,16 @@
   </style>
 </head>
 <body>
+  <!-- Floating love emojis -->
+  <div class="love-emoji">💕</div>
+  <div class="love-emoji">💖</div>
+  <div class="love-emoji">💝</div>
+  <div class="love-emoji">💗</div>
+  <div class="love-emoji">💓</div>
+  <div class="love-emoji">💞</div>
+  <div class="love-emoji">💘</div>
+  <div class="love-emoji">💕</div>
+
   <div class="card">
     <h2>ঈদ মোবারক, প্রিয়তমা! <br><small>(আমার ঈদের চাঁদ)🌙</small></h2>
     <div class="line" id="line1"></div>
@@ -62,16 +113,16 @@
     <div class="line" id="line4"></div>
     <div class="footer" id="footer">
       চিরকাল তোমারই,<br>
-      তোমার সায়মন 💌
+      তোমার সায়মন 💌
     </div>
   </div>
 
   <script>
     const lines = [
-      "জিনিয়া… আমি জানি এই ঈদটা অন্য সব ঈদের মতো হাসিখুশি কাটছে না। অনেক চাপ, অনেক প্রশ্নের মুখে দাঁড়িয়ে থেকেও তুমি সব সামলে নিচ্ছো—আর তার সঙ্গে আছে আমার মুখের তিক্ত কথা, আমি জানি আমার বলা বেশির ভাগ কথায় তুমি কষ্ট পাও, গ্রামে আছো, সবার মাঝে আছো ঠিকই, কিন্তু জানি তোমার মনটা ভালো নেই।",
+      "জিনিয়া… আমি জানি এই ঈদটা অন্য সব ঈদের মতো হাসিখুশি কাটছে না। অনেক চাপ, অনেক প্রশ্নের মুখে দাঁড়িয়ে থেকেও তুমি সব সামলে নিচ্ছো—আর তার সঙ্গে আছে আমার মুখের তিক্ত কথা, আমি জানি আমার বলা বেশির ভাগ কথায় তুমি কষ্ট পাও, গ্রামে আছো, সবার মাঝে আছো ঠিকই, কিন্তু জানি তোমার মনটা ভালো নেই।",
       "অনেক ভালোবাসি, কলিজা… অজান্তেই কষ্ট দেই, মন না চাইলেও কখনো - কখনো কষ্ট দিই।",
-      "তুমি ছাড়া আমার সব কিছু অসম্পূর্ণ লাগে… প্রথম দিককার দিনগুলোর কথা খুব মনে পড়ে ।",
-      "আজকের এই পবিত্র দিনে, আমি শুধু একটাই কথা বলবো— ক্ষমা চাই তোমার কাছে…  ঈদ মোবারক, প্রিয় কলিজা। 🕊💛"
+      "তুমি ছাড়া আমার সব কিছু অসম্পূর্ণ লাগে… প্রথম দিককার দিনগুলোর কথা খুব মনে পড়ে ।",
+      "আজকের এই পবিত্র দিনে, আমি শুধু একটাই কথা বলবো— ক্ষমা চাই তোমার কাছে…  ঈদ মোবারক, প্রিয় কলিজা। 🕊💛"
     ];
 
     function typeLine(text, elementId, delay, callback) {
@@ -98,6 +149,23 @@
         });
       });
     });
+
+    // Create floating heart particles
+    function createHeartParticle() {
+      const heart = document.createElement('div');
+      heart.className = 'heart-particle';
+      heart.innerHTML = '💖';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+      document.body.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    // Create heart particles periodically
+    setInterval(createHeartParticle, 2000);
   </script>
 </body>
 </html>
