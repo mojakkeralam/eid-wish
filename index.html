@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ঈদ মোবারক বার্তা</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1604152135912-04a022e2366b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Hind Siliguri', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.88);
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      max-width: 400px;
+      width: 90%;
+      border: 2px solid #ff9ea7;
+      text-align: center;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #d90000;
+    }
+
+    .line {
+      font-size: 17px;
+      color: #222;
+      line-height: 1.8;
+      min-height: 1.8em;
+      white-space: pre-wrap;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-weight: bold;
+      color: #444;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>ঈদ মোবারক, জান্নাত জাহান জিনিয়া! 🌙</h2>
+    <div class="line" id="line1"></div>
+    <div class="line" id="line2"></div>
+    <div class="line" id="line3"></div>
+    <div class="line" id="line4"></div>
+    <div class="footer" id="footer">
+      চিরকাল তোমারই,<br>
+      তোমার সায়মন 💌
+    </div>
+  </div>
+
+  <script>
+    const lines = [
+      "জিনিয়া… আমি জানি এই ঈদটা অন্য সব ঈদের মতো হাসিখুশি কাটছে না। অনেক চাপ, অনেক প্রশ্নের মুখে দাঁড়িয়ে থেকেও তুমি সব সামলে নিচ্ছো—আর তার সঙ্গে আছে আমার মুখের তিক্ত কথা, আমি জানি আমার বলা বেশির ভাগ কথায় তুমি কষ্ট পাও, গ্রামে আছো, সবার মাঝে আছো ঠিকই, কিন্তু জানি তোমার মনটা ভালো নেই।",
+      "অনেক ভালোবাসি, কলিজা… অজান্তেই কষ্ট দেই, মন না চাইলেও কখনো - কখনো কষ্ট দিই।",
+      "তুমি ছাড়া আমার সব কিছু অসম্পূর্ণ লাগে… প্রথম দিককার দিনগুলোর কথা খুব মনে পড়ে ।",
+      "আজকের এই পবিত্র দিনে, আমি শুধু একটাই কথা বলবো— ক্ষমা চাই তোমার কাছে…  ঈদ মোবারক, প্রিয় কলিজা। 🕊💛"
+    ];
+
+    function typeLine(text, elementId, delay, callback) {
+      const el = document.getElementById(elementId);
+      let i = 0;
+      function typeChar() {
+        if (i <= text.length) {
+          el.textContent = text.slice(0, i);
+          i++;
+          setTimeout(typeChar, 50);
+        } else if (callback) {
+          callback();
+        }
+      }
+      setTimeout(typeChar, delay);
+    }
+
+    typeLine(lines[0], "line1", 500, () => {
+      typeLine(lines[1], "line2", 500, () => {
+        typeLine(lines[2], "line3", 500, () => {
+          typeLine(lines[3], "line4", 500, () => {
+            document.getElementById("footer").style.display = "block";
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
